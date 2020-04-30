@@ -6,7 +6,6 @@ import com.example.todoApp.exceptions.ValidationException;
 import com.example.todoApp.services.interfaces.TodoServiceInterface;
 import org.springframework.util.StringUtils;
 
-import java.awt.print.Pageable;
 import java.time.Instant;
 import java.util.List;
 
@@ -30,13 +29,8 @@ public class TodoService implements TodoServiceInterface {
     }
 
     @Override
-    public List<TodoItemDTO> get(Pageable page) {
-        return this.todoContext.get(page);
-    }
-
-    @Override
-    public List<TodoItemDTO> getAll() {
-        return this.todoContext.getAll();
+    public List<TodoItemDTO> getTodoList() {
+        return this.todoContext.getTodoList();
     }
 
     @Override

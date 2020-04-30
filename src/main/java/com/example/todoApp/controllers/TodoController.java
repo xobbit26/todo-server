@@ -4,7 +4,6 @@ import com.example.todoApp.DTOs.TodoItemDTO;
 import com.example.todoApp.services.interfaces.TodoServiceInterface;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -27,13 +26,8 @@ public class TodoController {
     }
 
     @GetMapping("/todo-list")
-    public List<TodoItemDTO> getTodoList(Pageable pageable) {
-        return todoService.getAll();
-    }
-
-    @GetMapping("/all-todo-list")
-    public List<TodoItemDTO> getAllTodoList() {
-        return todoService.getAll();
+    public List<TodoItemDTO> getTodoList() {
+        return todoService.getTodoList();
     }
 
     @PutMapping("/todo/{id}")

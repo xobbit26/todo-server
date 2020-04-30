@@ -4,11 +4,9 @@ import com.example.todoApp.DAL.interfaces.TodoContextInterface;
 import com.example.todoApp.DTOs.TodoItemDTO;
 import com.example.todoApp.exceptions.TodoItemNotFoundException;
 
-import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class TodoStaticContext implements TodoContextInterface {
 
@@ -29,16 +27,7 @@ public class TodoStaticContext implements TodoContextInterface {
     }
 
     @Override
-    public List<TodoItemDTO> get(Pageable page) {
-        //TODO: create true pageable
-        return todoItemsStaticStore
-                .stream()
-                .limit(10)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<TodoItemDTO> getAll() {
+    public List<TodoItemDTO> getTodoList() {
         return todoItemsStaticStore;
     }
 
