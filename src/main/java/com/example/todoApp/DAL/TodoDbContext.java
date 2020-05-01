@@ -4,6 +4,7 @@ import com.example.todoApp.DAL.interfaces.TodoContextInterface;
 import com.example.todoApp.DTOs.TodoItemDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 public class TodoDbContext implements TodoContextInterface {
 
@@ -13,8 +14,8 @@ public class TodoDbContext implements TodoContextInterface {
     }
 
     @Override
-    public TodoItemDTO getById(long id) {
-        return null;
+    public Optional<TodoItemDTO> getById(long id) {
+        return Optional.empty();
     }
 
     @Override
@@ -23,12 +24,12 @@ public class TodoDbContext implements TodoContextInterface {
     }
 
     @Override
-    public TodoItemDTO update(long id, TodoItemDTO todoItem) {
-        return null;
+    public void delete(long id) {
+
     }
 
     @Override
-    public void delete(long id) {
+    public void save(TodoItemDTO todoItem) {
 
     }
 }
