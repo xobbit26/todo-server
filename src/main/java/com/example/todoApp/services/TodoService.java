@@ -10,6 +10,8 @@ import java.time.Instant;
 import java.util.List;
 
 public class TodoService implements TodoServiceInterface {
+    private final static String TODO_ITEM_NOT_FOUND = "couldn't find the todo item with id %s";
+
     TodoContextInterface todoContext;
 
     public TodoService(TodoContextInterface todoContext) {
@@ -25,7 +27,8 @@ public class TodoService implements TodoServiceInterface {
 
     @Override
     public TodoItemDTO getById(long id) {
-        return this.todoContext.getById(id);
+        return this.todoContext.getById(id)
+                .orElseThrow(() -> new ValidationException(String.format(TODO_ITEM_NOT_FOUND, id)));
     }
 
     @Override
@@ -35,7 +38,17 @@ public class TodoService implements TodoServiceInterface {
 
     @Override
     public TodoItemDTO update(long id, TodoItemDTO todoItem) {
-        return this.todoContext.update(id, todoItem);
+        validateModel(todoItem);
+        TodoItemDTO todoItemToUpdate = this.todoContext.getById(id)
+                .orElseThrow(() -> new ValidationException(String.format(TODO_ITEM_NOT_FOUND, id)));
+
+        todoItemToUpdate.setText(todoItem.getText());
+        todoItemToUpdate.setCompleted(todoItem.isCompleted());
+        todoItemToUpdate.setCompletedOn(todoItem.getCompletedOn());
+
+        todoContext.save(todoItemToUpdate);
+
+        return todoItemToUpdate;
     }
 
     @Override
@@ -54,7 +67,7 @@ public class TodoService implements TodoServiceInterface {
     }
 
     private void setTodoCreatedTime(TodoItemDTO todoItem) {
-        if(todoItem.getCreatedOn() == null){
+        if (todoItem.getCreatedOn() == null) {
             todoItem.setCreatedOn(Instant.now());
         }
     }

@@ -1,6 +1,6 @@
 package com.example.todoApp.configuration;
 
-import com.example.todoApp.DAL.TodoStaticContext;
+import com.example.todoApp.DAL.TodoDbContext;
 import com.example.todoApp.DAL.interfaces.TodoContextInterface;
 import com.example.todoApp.services.TodoService;
 import com.example.todoApp.services.interfaces.TodoServiceInterface;
@@ -12,7 +12,7 @@ public class ApplicationConfiguration {
 
     @Bean
     public TodoContextInterface todoContext() {
-        return new TodoStaticContext();
+        return new TodoDbContext();
     }
 
     @Bean
