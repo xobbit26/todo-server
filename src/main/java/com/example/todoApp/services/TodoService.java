@@ -16,7 +16,7 @@ public class TodoService implements TodoServiceInterface {
     private final static String TODO_ITEM_NOT_FOUND = "couldn't find the todo item with id %s";
 
     @Autowired
-    TodoItemRepository todoItemRepository;
+    private TodoItemRepository todoItemRepository;
 
     @Override
     public void create(TodoItemDTO todoItem) {
