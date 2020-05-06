@@ -9,3 +9,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/todo_db
     username: postgres
     password: postgres
+
+#app-config:
+#    ui-url: "http://localhost:3000"
