@@ -47,7 +47,7 @@ public class TodoService implements TodoServiceInterface {
     }
 
     @Override
-    public TodoItemDTO update(long id, TodoItemDTO todoItem) {
+    public void update(long id, TodoItemDTO todoItem) {
         validateModel(todoItem);
         TodoItem todoItemToUpdate = todoItemRepository.findById(id)
                 .orElseThrow(() -> new ValidationException(String.format(TODO_ITEM_NOT_FOUND, id)));
@@ -55,11 +55,9 @@ public class TodoService implements TodoServiceInterface {
         todoItemToUpdate.setText(todoItem.getText());
         todoItemToUpdate.setCompletedOn(todoItem.getCompletedOn());
         todoItemToUpdate.setCompleted(todoItem.isCompleted());
-        todoItemToUpdate.setUpdatedOn(todoItem.getUpdatedOn());
+        todoItemToUpdate.setUpdatedOn(todoItem.getUpdatedOn() == null ? Instant.now() : todoItem.getCreatedOn());
 
         todoItemRepository.save(todoItemToUpdate);
-
-        return mapTodoEntityToDTO(todoItemToUpdate);
     }
 
     @Override

@@ -10,12 +10,12 @@ public class TodoItemDTO {
     private final boolean isCompleted;
     private final Instant completedOn;
 
-    public TodoItemDTO(long id, String text, Instant createdOn, Instant updatedOn, boolean isCompleted, Instant completedOn) {
+    public TodoItemDTO(long id, String text, Instant createdOn, Instant updatedOn, boolean completed, Instant completedOn) {
         this.id = id;
         this.text = text;
         this.createdOn = createdOn;
         this.updatedOn = updatedOn;
-        this.isCompleted = isCompleted;
+        this.isCompleted = completed;
         this.completedOn = completedOn;
     }
 
@@ -42,5 +42,4 @@ public class TodoItemDTO {
     public Instant getCompletedOn() {
         return completedOn;
     }
-
 }

@@ -8,6 +8,6 @@ public interface TodoServiceInterface {
     void create(TodoItemDTO todoItem);
     TodoItemDTO getById(long id);
     List<TodoItemDTO> getTodoList();
-    TodoItemDTO update(long id, TodoItemDTO todoItem);
+    void update(long id, TodoItemDTO todoItem);
     void delete(long id);
 }
