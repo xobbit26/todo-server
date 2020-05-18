@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/api/todo")
 public class TodoController {
 
-    private TodoServiceInterface todoService;
+    private final TodoServiceInterface todoService;
 
     public TodoController(TodoServiceInterface todoService) {
         this.todoService = todoService;
