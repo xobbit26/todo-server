@@ -11,4 +11,4 @@ spring:
     password: postgres
 
 application:
-    ui-url: "http://localhost:3000"
+  ui-url: "http://localhost:3000"

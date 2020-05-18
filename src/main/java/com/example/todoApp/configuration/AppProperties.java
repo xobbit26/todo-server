@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties(prefix = "application")
-public class AppSettings {
+public class AppProperties {
     private String uiUrl;
 
     public String getUiUrl() {
