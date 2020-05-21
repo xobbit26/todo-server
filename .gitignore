@@ -2,3 +2,4 @@
 /target/
 /.idea/
 /src/main/resources/static/
+/logs/spring-boot-logger.log
